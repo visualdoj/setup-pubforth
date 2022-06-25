@@ -16,4 +16,4 @@ GitHub action for installing latest released [PubForth](https://github.com/visua
         run:  pubforth --experimental -e "1 2 3 . . ."
 ```
 
-See [example-for-setup-pubforth](https://github.com/visualdoj/example-for-setup-pubforth) for full example.
+See [example-of-setup-pubforth](https://github.com/visualdoj/example-of-setup-pubforth) for full workflow.
