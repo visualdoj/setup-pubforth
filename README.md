@@ -12,7 +12,7 @@ GitHub action for installing latest released [PubForth](https://github.com/visua
       - name: Setup PubForth
         uses: visualdoj/setup-pubforth@main
 
-      - name: Run program
+      - name: Run PubForth
         run:  pubforth --experimental -e "1 2 3 . . ."
 ```
 
