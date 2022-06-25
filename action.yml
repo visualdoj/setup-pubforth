@@ -21,9 +21,10 @@ runs:
   steps:
     - name: Download release asset
       id: asset
+      working-directory: "${{ github.workspace }}"
       shell: bash
       run: |
-          gh release download --dir ${{ github.workspace }}/.pubforth --pattern "pubforth-$RUNNER_OS-x64.tar.gz" --repo visualdoj/pubforth
+          gh release download --dir .pubforth --pattern "pubforth-$RUNNER_OS-x64.tar.gz" --repo visualdoj/pubforth
           echo "::set-output name=tarball_name::pubforth-$RUNNER_OS-x64"
       env:
           GITHUB_TOKEN: ${{ inputs.repo-token }}
