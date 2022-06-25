@@ -32,6 +32,8 @@ runs:
       working-directory: "${{ github.workspace }}"
       shell: bash
       run: |
+          ls
+          ls .pubforth
           tar xvf ".pubforth/${{ steps.asset.outputs.tarball_name }}.tar.gz" -C .pubforth
           mv ".pubforth/${{ steps.asset.outputs.tarball_name }}" pubforth
 
