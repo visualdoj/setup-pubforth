@@ -1,6 +1,6 @@
 # Setup PubForth
 
-GitHub action for installing latest released [PubForth](https://github.com/visualdoj/pubforth). Works on Linux, Windows and macOS workers.
+GitHub action for installing latest released [PubForth](https://github.com/visualdoj/pubforth). Works on Linux, Windows and macOS runners.
 
 # Inputs
 
