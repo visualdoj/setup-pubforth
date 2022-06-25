@@ -29,11 +29,11 @@ runs:
           GITHUB_TOKEN: ${{ inputs.repo-token }}
 
     - name: Unpacking tarball 
-      working-directory: "${{ github.workspace }}/.pubforth"
+      working-directory: "${{ github.workspace }}"
       shell: bash
       run: |
-          tar xvf "${{ steps.asset.outputs.tarball_name }}.tar.gz"
-          mv "${{ steps.asset.outputs.tarball_name }}" ../pubforth
+          tar xvf ".pubforth/${{ steps.asset.outputs.tarball_name }}.tar.gz" -C .pubforth
+          mv ".pubforth/${{ steps.asset.outputs.tarball_name }}" pubforth
 
     - name: Output
       id: output
