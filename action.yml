@@ -1,0 +1,36 @@
+name: "Setup PubForth"
+description: "Download and setup latest PubForth release"
+author: "Doj"
+
+outputs:
+  pubforth_bin:
+    description: 'Path to pubforth bin'
+    value: ${{ steps.output.pubforth_bin }}
+  pubforth:
+    description: 'Path to pubforth executable'
+    value: ${{ steps.output.pubforth }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Download release asset
+      id: asset
+      shell: bash
+      run: |
+          gh release download --dir ${{ github.workspace }}/.pubforth --pattern "pubforth-$RUNNER_OS-x64.tar.gz" --repo visualdoj/pubforth
+          echo "::set-output name=tarball_name::pubforth-$RUNNER_OS-x64"
+
+    - name: Unpacking tarball 
+      working-directory: "${{ github.workspace }}/.pubforth"
+      shell: bash
+      run: |
+          tar xvf "${{ steps.asset.outputs.tarball_name }}.tar.gz"
+          mv "${{ steps.asset.outputs.tarball_name }}" ../pubforth
+
+    - name: Output
+      id: output
+      shell: bash
+      run: |
+          echo "${{ github.workspace }}/pubforth/bin" >> $GITHUB_PATH
+          echo "::set-output name=pubforth_bin::${{ github.workspace }}/pubforth/bin"
+          echo "::set-output name=pubforth::${{ github.workspace }}/pubforth/bin/pubforth"
