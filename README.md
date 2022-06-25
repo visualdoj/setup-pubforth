@@ -10,7 +10,6 @@ GitHub action for installing latest released [PubForth](https://github.com/visua
 
 ```yaml
       - name: Setup PubForth
-        id: setup
         uses: visualdoj/setup-pubforth@main
 
       - name: Run program
