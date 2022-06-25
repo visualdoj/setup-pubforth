@@ -19,6 +19,7 @@ runs:
       run: |
           gh release download --dir ${{ github.workspace }}/.pubforth --pattern "pubforth-$RUNNER_OS-x64.tar.gz" --repo visualdoj/pubforth
           echo "::set-output name=tarball_name::pubforth-$RUNNER_OS-x64"
+      env: GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Unpacking tarball 
       working-directory: "${{ github.workspace }}/.pubforth"
