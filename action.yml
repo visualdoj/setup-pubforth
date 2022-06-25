@@ -2,6 +2,12 @@ name: "Setup PubForth"
 description: "Download and setup latest PubForth release"
 author: "Doj"
 
+inputs:
+  repo-token:
+    description: 'GitHub token'
+    required: true
+    default: ${{ github.token }}
+
 outputs:
   pubforth_bin:
     description: 'Path to pubforth bin'
@@ -20,7 +26,7 @@ runs:
           gh release download --dir ${{ github.workspace }}/.pubforth --pattern "pubforth-$RUNNER_OS-x64.tar.gz" --repo visualdoj/pubforth
           echo "::set-output name=tarball_name::pubforth-$RUNNER_OS-x64"
       env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ inputs.repo-token }}
 
     - name: Unpacking tarball 
       working-directory: "${{ github.workspace }}/.pubforth"
